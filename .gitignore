@@ -1,0 +1,13 @@
+target
+dist/target
+dist/*.iml
+stratiodockerspawner/target
+stratiodockerspawner/*.iml
+.idea/*
+.idea/
+remote_user_authenticator/remote_user.iml
+*.iml
+**/__pycache__
+**/jupyterhub_cookie_secret
+**/.cache
+json-con-api.json
