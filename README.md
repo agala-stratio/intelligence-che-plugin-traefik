@@ -59,11 +59,14 @@ That creates our che-plugin-traefik-stratio.jar. Now we have to assembly as a de
 
 **3. assembly to che project**
 
-We now download the che project:
+We now download the che project: (USE HERE THE VERSION TAG YOU WANT TO EXTEND)
 ```
 git clone https://github.com/eclipse/che.git
-git checkout tags/5.20.1 // USE HERE THE VERSION YOU WANT TO EXTEND
+git checkout tags/5.20.1 
+```
+
 in the root pom.xml we add our module as a dependency:
+```
  <dependency>
     <groupId>com.stratio.intelligence.che.plugin</groupId>
     <artifactId>che-plugin-traefik-stratio</artifactId>
@@ -105,9 +108,9 @@ ENV:
 ```
 "CHE_PLUGIN_TRAEFIK_STRATIO_ENABLED":"true",
 "CHE_DOCKER_SERVER_EVALUATION_STRATEGY_CUSTOM_TEMPLATE" : "exposed hostname or host:port/<serverName><machineName><workspaceId>"
-```
 ex:
 predatio.traefik/<serverName><machineName><workspaceId>
+```
 
 VOLUME MOUNTING:
 ```   
