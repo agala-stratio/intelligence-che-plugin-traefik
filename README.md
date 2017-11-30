@@ -96,9 +96,9 @@ and finally in assembly/assembly-main
 ```
 mvn clean install
 ```
-We have created then a new assembly in target/ folder
-assembly/assembly-main/target/eclipse-che-5.20.1.tar.gz
-so we can deploy that artifact into our cluster node and untar it. (Is mandatory)
+We have created a new assembly in the folder
+assembly/assembly-main/target/eclipse-che-5.20.1.tar.gz.
+So we need to untar the tar.gz and mount an assembly volume with it.(mandatory, see below)
 
 **4. Plugin testing**
 
