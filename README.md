@@ -117,8 +117,9 @@ VOLUME MOUNTING:
 { "containerPath": "/assembly", "hostPath": "<local_path>/assembly/assembly-main/target/eclipse-che-5.20.1/eclipse-che-5.20.1", "mode": "RW" }
 ```
 we can check that the plugin is running by checking in the container logs
-docker logs <container_id che-server>
+
 ```
+docker logs <container_id che-server>
 ....
 TRAEFIK STRATIO PLUGIN LOADED
 ....
