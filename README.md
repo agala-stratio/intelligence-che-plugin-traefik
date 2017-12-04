@@ -77,8 +77,9 @@ mvn sortpom:sort
 
 Since our plugin belongs to wsmaster, 
 we need to modify the file 
-assembly/assembly-wsmaster-war/src/main/java/org/eclipse/che/api/deploy/LocalWsMasterModule.java
 ```
+assembly/assembly-wsmaster-war/src/main/java/org/eclipse/che/api/deploy/LocalWsMasterModule.java:
+
 configure() {
   ...
     install(new com.stratio.intelligence.che.plugin.traefik.TraefikDockerModule());
