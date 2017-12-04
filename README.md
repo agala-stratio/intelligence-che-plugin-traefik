@@ -119,7 +119,7 @@ docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock \
 -v /tmp/conf:/conf \
 -v <local_path>/assembly/assembly-main/target/eclipse-che-5.20.1/eclipse-che-5.20.1:/assembly \
 -e "CHE_PLUGIN_TRAEFIK_STRATIO_ENABLED=true" \
--e "CHE_DOCKER_SERVER_EVALUATION_STRATEGY_CUSTOM_TEMPLATE=<exposed hostname or host:port>/<serverName><machineName><workspaceId>" \
+-e "CHE_DOCKER_SERVER_EVALUATION_STRATEGY_CUSTOM_TEMPLATE=<exposed traefik hostname or host:port>/<serverName><machineName><workspaceId>" \
 eclipse/che-server:5.20.1 start
 ```
 **4.2 Marathon**
@@ -129,7 +129,7 @@ We can test it on marathon by adding in the json:
 ENV:
 ```
 "CHE_PLUGIN_TRAEFIK_STRATIO_ENABLED":"true",
-"CHE_DOCKER_SERVER_EVALUATION_STRATEGY_CUSTOM_TEMPLATE" : "exposed hostname or host:port/<serverName><machineName><workspaceId>"
+"CHE_DOCKER_SERVER_EVALUATION_STRATEGY_CUSTOM_TEMPLATE" : "exposed traefik hostname or host:port/<serverName><machineName><workspaceId>"
 ex:
 predatio.traefik/<serverName><machineName><workspaceId>
 ```
