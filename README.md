@@ -52,8 +52,7 @@ mvn sortpom:sort
 mvn fmt:format test 
 mvn clean install
 ```
-That installs the jar into your .m2 local repo
-That creates our che-plugin-traefik-stratio.jar. Now we have to assembly as a dependency (in our case wsmaster dependency, 3 kinds of dependecies: wsmaster, wsagent and IDE)
+That creates our che-plugin-traefik-stratio.jar and install it into your .m2 local repo. Now we have to assembly it as a dependency (in our case wsmaster dependency, 3 kinds of dependecies: wsmaster, wsagent and IDE)
 
 **3. assembly to che project**
 
