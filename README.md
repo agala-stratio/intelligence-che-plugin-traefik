@@ -7,7 +7,7 @@ Parent tag:
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>che-plugin-parent</artifactId>
+        <artifactId>che-parent</artifactId>
         <groupId>org.eclipse.che.plugin</groupId>
         <version>5.20.1</version> <!-- USE HERE THE VERSION YOU WANT TO EXTEND -->
     </parent>
@@ -75,8 +75,19 @@ then
 mvn sortpom:sort
 ```
 
-Since our plugin belongs to wsmaster, we have to re-assembly the master:
-in assembly/assembly-wsmaster-war pom we add:
+Since our plugin belongs to wsmaster, 
+we need to modify the file 
+assembly/assembly-wsmaster-war/src/main/java/org/eclipse/che/api/deploy/LocalWsMasterModule.java
+```
+configure() {
+  ...
+    install(new com.stratio.intelligence.che.plugin.traefik.TraefikDockerModule());
+  ...
+}
+```
+
+Then, we have to re-assembly the master:
+in assembly/assembly-wsmaster-war pom.xml we add:
 ```
 <dependency>
     <groupId>com.stratio.intelligence.che.plugin</groupId>
@@ -87,6 +98,7 @@ in assembly/assembly-wsmaster-war pom we add:
 then 
 ```
 mvn sortpom:sort
+mvn fmt:format test
 mvn clean install
 ```
 and finally in assembly/assembly-main
