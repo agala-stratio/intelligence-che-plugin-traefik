@@ -23,7 +23,6 @@ public class TraefikDockerModule extends AbstractModule {
   /** Configure the traefik components */
   @Override
   protected void configure() {
-
     // add logic only if plug-in is enabled.
     if (parseBoolean(getenv("CHE_PLUGIN_TRAEFIK_STRATIO_ENABLED"))) {
       // add an interceptor to intercept createContainer calls and then get the final labels

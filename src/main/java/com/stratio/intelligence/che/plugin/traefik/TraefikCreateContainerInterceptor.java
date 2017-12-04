@@ -76,6 +76,8 @@ public class TraefikCreateContainerInterceptor implements MethodInterceptor {
     ContainerConfig containerConfig = createContainerParams.getContainerConfig();
     String image = containerConfig.getImage();
 
+    LOG.info("Container Config: \n{}", containerConfig.toString());
+
     // first, get labels defined in the container configuration
     Map<String, String> containerLabels = containerConfig.getLabels();
 
