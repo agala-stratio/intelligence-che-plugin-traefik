@@ -13,7 +13,7 @@
         <version>5.20.1</version>
     </parent>
     <groupId>com.stratio.intelligence.che.plugin</groupId>
-    <artifactId>che-plugin-traefik-stratiov3</artifactId>
+    <artifactId>che-plugin-traefik-stratio</artifactId>
     <packaging>jar</packaging>
     <name>Che Plugin :: Traefik :: Stratio</name>
     <developers>
