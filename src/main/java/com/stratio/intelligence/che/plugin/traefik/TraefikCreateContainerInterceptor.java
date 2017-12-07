@@ -9,14 +9,12 @@ import static java.lang.String.format;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.inject.name.Named;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Stream;
 import javax.inject.Inject;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.apache.commons.lang.ArrayUtils;
 import org.eclipse.che.commons.annotation.Nullable;
 import org.eclipse.che.plugin.docker.client.DockerConnector;
 import org.eclipse.che.plugin.docker.client.json.ContainerConfig;
@@ -74,9 +72,34 @@ public class TraefikCreateContainerInterceptor implements MethodInterceptor {
 
     // Grab container configuration
     ContainerConfig containerConfig = createContainerParams.getContainerConfig();
-    String image = containerConfig.getImage();
 
+    /** test */
+    // Env vars
+    LOG.info("Container Initial Env: \n{}", containerConfig.getEnv());
+
+    // TODO get from DOCKER ENV_VARIABLE
+    String[] newEnv = {"STRATIO_VAULT_PATH=/path/to/vault"};
+    containerConfig.setEnv((String[]) ArrayUtils.addAll(containerConfig.getEnv(), newEnv));
+
+    String[] cmd = {
+      "/bin/sh", "-c", "sleep 20; echo $STRATIO_VAULT_PATH > /tmp/stratio.file; tail -f /dev/null"
+    };
+
+    LOG.info("Container Initial Cmd: \n{}", containerConfig.getCmd());
+
+    containerConfig.setCmd(cmd);
+
+    /** end-test */
+    containerConfig.setUser("root");
+
+    /**
+     * TODO change withVolumeDriver("nfs") as a DOCKER ENV_VARIABLE NFSHostConfig nfsHostConfig =
+     * new NFSHostConfig(containerConfig.getHostConfig()); nfsHostConfig.setVolumeDriver("");
+     * containerConfig.setHostConfig(nfsHostConfig);
+     */
     LOG.info("Container Config: \n{}", containerConfig.toString());
+
+    String image = containerConfig.getImage();
 
     // first, get labels defined in the container configuration
     Map<String, String> containerLabels = containerConfig.getLabels();

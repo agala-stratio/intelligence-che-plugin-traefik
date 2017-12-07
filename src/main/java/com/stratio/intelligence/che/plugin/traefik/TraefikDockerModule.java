@@ -34,7 +34,8 @@ public class TraefikDockerModule extends AbstractModule {
           names("createContainer"),
           traefikCreateContainerInterceptor);
 
-      System.out.println("************\n\n\nTRAEFIK STRATIO PLUGIN LOADED\n\n\n************");
+      System.out.println(
+          "************\n\n\nTRAEFIK+NFS+ENTRYPOINT (V2.0) STRATIO PLUGIN LOADED\n\n\n************");
     }
   }
 }
